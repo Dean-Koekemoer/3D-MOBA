@@ -29,7 +29,7 @@ public class movement : MonoBehaviour
 
     void PlayerMovement()
     {
-        transform.Translate(Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime, Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime, 0f);
+        transform.Translate(Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime, 0f,Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime);
     }
 
     void LookAtMouse()
