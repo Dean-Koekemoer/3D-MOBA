@@ -12,7 +12,7 @@ public class cameraScript : MonoBehaviour
     [Range(5, 10)]
     public int cameraZoom = 10;
 
-    public int cameraDistance = -1;
+    public int cameraDistance = 10;
 
     public Camera thisCam;
     
@@ -20,13 +20,13 @@ public class cameraScript : MonoBehaviour
     void Start()
     {
         thisCam = this.GetComponent<Camera>();
-}
+    }
 
     void LateUpdate()
     {
         thisCam.orthographicSize = cameraZoom;
 
-        Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, cameraDistance);
+        Vector3 desiredPosition = new Vector3(target.position.x, cameraDistance, target.position.z);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
 
@@ -40,7 +40,7 @@ public class cameraScript : MonoBehaviour
             cameraZoom--;
         }
 
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f && cameraZoom >= 5 &&cameraZoom <10)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f && cameraZoom >= 5 && cameraZoom <10)
         {
                 cameraZoom++;
             
